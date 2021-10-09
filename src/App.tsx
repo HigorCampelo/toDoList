@@ -18,12 +18,22 @@ const App = () => {
     }
   ]);
 
+  const handleAddTask = (taskName: string) => {
+    let newlist = [...list]; //clona a lista
+    newlist.push({
+      id: list.length + 1,
+      name: taskName,
+      done: false
+    });
+    setList(newlist);
+  }
+
   return (
     <C.Container>
       <C.Area>
         <C.Header> Lista de Atividades </C.Header>
 
-        <AddArea />
+        <AddArea onEnter={handleAddTask} />
 
         {list.map((item, index) => (
           <ListItem key={index} item={item} />
