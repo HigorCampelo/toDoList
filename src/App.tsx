@@ -1,6 +1,8 @@
 import * as C from './App.styles';
 import { useState } from 'react';
 import { Item } from './types/itemList';
+import { ListItem } from './components/ListItem';  //vai entrar na pasta e procurar o arquivo index
+import { AddArea } from './components/AddArea';
 
 const App = () => {
   const [list, setList] = useState<Item[]>([
@@ -12,7 +14,7 @@ const App = () => {
     {
       id: 2,
       name: 'Estudar 1 hora de Inglês',
-      done: false
+      done: true
     }
   ]);
 
@@ -21,9 +23,10 @@ const App = () => {
       <C.Area>
         <C.Header> Lista de Atividades </C.Header>
 
-        {/* Area de adicionar nova tarefa*/}
+        <AddArea />
+
         {list.map((item, index) => (
-          <div> {item.name}</div>
+          <ListItem key={index} item={item} />
         ))}
 
       </C.Area>
